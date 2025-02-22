@@ -14,6 +14,7 @@ const initialState = {
 };
 
 const gridReducer = (state, action) => {
+  console.log("Action dispatched:", action);
   switch (action.type) {
     case "SET_SELECTED_COLOR":
       return { ...state, selectedColor: action.color };
@@ -30,7 +31,7 @@ const gridReducer = (state, action) => {
 function App() {
   const [state, gridDispatch] = useReducer(gridReducer, initialState);
 
-  console.log(state);
+  console.log("State: ", state);
 
   return (
     <>
