@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/*.{html,js}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"], // Ensure it scans JSX files
   theme: {
     extend: {},
   },

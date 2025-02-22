@@ -1,34 +1,28 @@
 import React, { useReducer } from "react";
-import Form from "./Form";
+import Cell from "./Cell";
 
-const initialState = {
-  grid: [
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-  ],
-  selectedColor: "blue",
-};
-
-const gridReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_COLOR":
-      return { ...state, selectedColor: action.selectedColor };
-
-    default:
-      break;
-  }
-};
-
-const Grid = () => {
-  const [grid, gridDispatch] = useReducer(gridReducer, initialState);
-
+const Grid = ({ grid, gridDispatch, selectedColor }) => {
   return (
-    <>
-      <Form gridDispatch={gridDispatch} />
-    </>
+    <div className="grid grid-rows-5 gap-5 max-w-md mx-auto mt-10">
+      {grid.map((row, rowPos) => {
+        return (
+          <ul className={`grid grid-cols-5 gap-5 `} key={rowPos}>
+            {row.map((cell, colPos) => {
+              return (
+                <Cell
+                  key={`${rowPos}-${colPos}`}
+                  cell={cell}
+                  rowPos={rowPos}
+                  colPos={colPos}
+                  gridDispatch={gridDispatch}
+                  selectedColor={selectedColor}
+                />
+              );
+            })}
+          </ul>
+        );
+      })}
+    </div>
   );
 };
 
