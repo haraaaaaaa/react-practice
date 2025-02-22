@@ -7,7 +7,10 @@ const Form = ({ gridDispatch }) => {
 
   return (
     <form className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-lg">
-      <label htmlFor="colorSelect" className="block text-gray-700 text-lg font-medium mb-2">
+      <label
+        htmlFor="colorSelect"
+        className="block text-gray-700 text-lg font-medium mb-2"
+      >
         Select Color
       </label>
       <select
@@ -19,6 +22,19 @@ const Form = ({ gridDispatch }) => {
         <option value="red">Red</option>
         <option value="green">Green</option>
       </select>
+
+      <button
+        type="button"
+        onClick={() => gridDispatch({ type: "COLOR_BLANK_CELLS" })}
+      >
+        COLOR BLANK CELLS
+      </button>
+      <button
+        type="button"
+        onClick={() => gridDispatch({ type: "COLOR_COLORED_CELLS" })}
+      >
+        COLOR COLORED CELLS
+      </button>
     </form>
   );
 };

@@ -11,7 +11,6 @@ const Cell = ({ cell, rowPos, colPos, gridDispatch }) => {
     blue: "bg-blue-700",
     red: "bg-red-700",
     green: "bg-green-700",
-    yellow: "bg-yellow-700",
     none: "bg-gray-200",
   };
 
