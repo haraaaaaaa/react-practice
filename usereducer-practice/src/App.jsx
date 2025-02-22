@@ -16,10 +16,12 @@ const initialState = {
 const gridReducer = (state, action) => {
   switch (action.type) {
     case "SET_COLOR":
-      return { ...state, selectedColor: action.selectedColor };
+      console.log("Set selected color - ", action.color);
+      return { ...state, selectedColor: action.color };
     case "SET_CELL_COLOR":
+      console.log("Set cell selected color - ", state.selectedColor);
       const updatedGrid = [...state.grid];
-      updatedGrid[action.rowPos][action.colPos].push(action.selectedColor);
+      updatedGrid[action.rowPos][action.colPos].push(state.selectedColor);
       return { ...state, grid: updatedGrid };
     default:
       return state;
@@ -28,12 +30,11 @@ const gridReducer = (state, action) => {
 
 function App() {
   const [state, gridDispatch] = useReducer(gridReducer, initialState);
-  const { grid, selectedColor } = state;
 
   return (
     <>
       <Form gridDispatch={gridDispatch} />
-      <Grid grid={grid} gridDispatch={gridDispatch} />
+      <Grid grid={state.grid} gridDispatch={gridDispatch} />
     </>
   );
 }

@@ -5,7 +5,7 @@ const Grid = ({ grid, gridDispatch }) => {
   return (
     <div className="grid grid-rows-5 gap-5 max-w-md mx-auto mt-10">
       {grid.map((row, rowPos) => (
-        <div className="grid grid-cols-5 gap-5" key={rowPos}>
+        <ul className="grid grid-cols-5 gap-5" key={rowPos}>
           {row.map((cell, colPos) => {
             return (
               <Cell
@@ -18,7 +18,7 @@ const Grid = ({ grid, gridDispatch }) => {
               />
             );
           })}
-        </div>
+        </ul>
       ))}
     </div>
   );
