@@ -27,6 +27,14 @@ const gridReducer = (state, action) => {
       return { grid: updatedGrid, selectedColor: state.selectedColor };
     case "COLOR_COLORED_CELLS":
       console.log("Colored already colored cells in - ", state.selectedColor);
+      updatedGrid.map((row, rowPos) => {
+        row.map((col, colPos) => {
+          if (updatedGrid[rowPos][colPos].length >= 1) {
+            updatedGrid[rowPos][colPos].push(state.selectedColor);
+          }
+        });
+      });
+      return { grid: updatedGrid, selectedColor: state.selectedColor };
 
     case "COLOR_BLANK_CELLS":
       console.log("Colored blank cells in - ", state.selectedColor);
@@ -37,7 +45,6 @@ const gridReducer = (state, action) => {
           }
         });
       });
-
       return { grid: updatedGrid, selectedColor: state.selectedColor };
 
     default:
