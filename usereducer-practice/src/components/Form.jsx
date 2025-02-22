@@ -2,7 +2,6 @@ import React from "react";
 
 const Form = ({ gridDispatch }) => {
   const selectChangeHandler = (e) => {
-    console.log("Selected color - ", e.target.value);
     return gridDispatch({ type: "SET_SELECTED_COLOR", color: e.target.value });
   };
 

@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import Cell from "./Cell";
 
-const Grid = ({ grid, gridDispatch }) => {
+const Grid = ({ grid, gridDispatch, selectedColor }) => {
   return (
     <div className="grid grid-rows-5 gap-5 max-w-md mx-auto mt-10">
       {grid.map((row, rowPos) => {
@@ -15,7 +15,7 @@ const Grid = ({ grid, gridDispatch }) => {
                   rowPos={rowPos}
                   colPos={colPos}
                   gridDispatch={gridDispatch}
-                  selectedColor={grid.selectedColor}
+                  selectedColor={selectedColor}
                 />
               );
             })}

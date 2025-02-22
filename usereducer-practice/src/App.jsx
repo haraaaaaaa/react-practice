@@ -17,9 +17,10 @@ const gridReducer = (state, action) => {
   console.log("Action dispatched:", action);
   switch (action.type) {
     case "SET_SELECTED_COLOR":
+      console.log("Set selected color - ", action.color);
       return { ...state, selectedColor: action.color };
     case "SET_CELL_COLOR":
-      console.log(state.selectedColor);
+      console.log("Set cell color - ", state.selectedColor);
       const updatedGrid = [...state.grid];
       updatedGrid[action.rowPos][action.colPos].push(state.selectedColor);
       return { grid: updatedGrid, selectedColor: state.selectedColor };
@@ -36,7 +37,7 @@ function App() {
   return (
     <>
       <Form gridDispatch={gridDispatch} />
-      <Grid grid={state.grid} gridDispatch={gridDispatch} />
+      <Grid grid={state.grid} gridDispatch={gridDispatch} selectedColor={state.selectedColor} />
     </>
   );
 }
