@@ -7,7 +7,7 @@ const Cell = ({ cell, rowPos, colPos, gridDispatch, selectedColor }) => {
   }
   return (
     <li
-      className={`w-12 h-12 rounded-md border border-gray-300 shadow-sm transition-all hover:scale-105 cursor-pointer bg-${selectedColor}-200`}
+      className={`w-12 h-12 rounded-md border border-gray-300 shadow-sm transition-all hover:scale-105 cursor-pointer bg-${lastColor}-700`}
       onClick={() => {
         gridDispatch({
           type: "SET_CELL_COLOR",
