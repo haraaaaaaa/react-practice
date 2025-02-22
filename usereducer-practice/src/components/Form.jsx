@@ -1,16 +1,24 @@
 import React from "react";
 
-const selectChangeHandler = (e) => {
-  return gridDispatch({ type: "SET_COLOR", color: e.target.value });
-};
-
 const Form = ({ gridDispatch }) => {
+  const selectChangeHandler = (e) => {
+    console.log("Selected color - ", e.target.value);
+    return gridDispatch({ type: "SET_SELECTED_COLOR", color: e.target.value });
+  };
+
   return (
-    <form>
-      <select onChange={selectChangeHandler}>
-        <option value="blue">BLUE</option>
-        <option value="red">RED</option>
-        <option value="green">GREEN</option>
+    <form className="p-4 max-w-md mx-auto bg-white shadow-lg rounded-lg">
+      <label htmlFor="colorSelect" className="block text-gray-700 text-lg font-medium mb-2">
+        Select Color
+      </label>
+      <select
+        id="colorSelect"
+        onChange={selectChangeHandler}
+        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+      >
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
       </select>
     </form>
   );

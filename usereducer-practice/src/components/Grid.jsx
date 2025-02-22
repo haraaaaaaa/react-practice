@@ -1,34 +1,31 @@
-import React, { useReducer } from "react";
-import Form from "./Form";
+import React from "react";
+import Cell from "./Cell";
 
-const initialState = {
-  grid: [
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-    [[], [], [], [], []],
-  ],
-  selectedColor: "blue",
-};
-
-const gridReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_COLOR":
-      return { ...state, selectedColor: action.selectedColor };
-
-    default:
-      break;
-  }
-};
-
-const Grid = () => {
-  const [grid, gridDispatch] = useReducer(gridReducer, initialState);
-
+const Grid = ({ grid, dispatch }) => {
   return (
-    <>
-      <Form gridDispatch={gridDispatch} />
-    </>
+    <div className="grid grid-rows-5 gap-5 max-w-md mx-auto mt-10">
+      {grid.map((row, rowPos) => (
+        <div className="grid grid-cols-5 gap-5" key={rowPos}>
+          {row.map((cell, colPos) => (
+            <Cell
+              key={`${rowPos}-${colPos}`}
+              className={`w-12 h-12 bg-${className}-500 rounded-md border border-gray-300 shadow-sm transition-all hover:scale-105`}
+              cell={cell}
+              rowPos={rowPos}
+              colPos={colPos}
+              onClick={() =>
+                dispatch({
+                  type: "SET_CELL_COLOR",
+                  rowPos,
+                  colPos,
+                  selectedColor: grid[rowPos][colPos].slice(-1)[0],
+                })
+              }
+            />
+          ))}
+        </div>
+      ))}
+    </div>
   );
 };
 
