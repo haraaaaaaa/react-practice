@@ -15,21 +15,22 @@ const initialState = {
 
 const gridReducer = (state, action) => {
   switch (action.type) {
-    case "SET_COLOR":
-      console.log("Set selected color - ", action.color);
+    case "SET_SELECTED_COLOR":
       return { ...state, selectedColor: action.color };
     case "SET_CELL_COLOR":
-      console.log("Set cell selected color - ", state.selectedColor);
+      console.log(state.selectedColor);
       const updatedGrid = [...state.grid];
       updatedGrid[action.rowPos][action.colPos].push(state.selectedColor);
-      return { ...state, grid: updatedGrid };
+      return { grid: updatedGrid, selectedColor: state.selectedColor };
     default:
-      return state;
+      break;
   }
 };
 
 function App() {
   const [state, gridDispatch] = useReducer(gridReducer, initialState);
+
+  console.log(state);
 
   return (
     <>
