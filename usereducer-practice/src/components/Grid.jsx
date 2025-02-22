@@ -15,7 +15,6 @@ const Grid = ({ grid, gridDispatch, selectedColor }) => {
                   rowPos={rowPos}
                   colPos={colPos}
                   gridDispatch={gridDispatch}
-                  selectedColor={selectedColor}
                 />
               );
             })}
