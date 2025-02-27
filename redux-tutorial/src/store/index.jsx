@@ -10,12 +10,14 @@ const songsSlice = createSlice({
     removeSong(state, action) {
       return state.filter((song) => song.id !== action.payload.id);
     },
-    resetSongPlaylist(state, action) {
+  },
+  extraReducers(builder) {
+    builder.addCase("movie/reset", (state, action) => {
       return [];
-    },
+    });
   },
 });
-export const { addSong, removeSong, resetSongPlaylist } = songsSlice.actions;
+export const { addSong, removeSong } = songsSlice.actions;
 
 const moviesSlice = createSlice({
   name: "movie",
@@ -27,12 +29,12 @@ const moviesSlice = createSlice({
     removeMovie(state, action) {
       return state.filter((movie) => movie.id !== action.payload.id);
     },
-    resetMoviePlaylist(state, action) {
+    reset(state, action) {
       return [];
     },
   },
 });
-export const { addMovie, removeMovie, resetMoviePlaylist } = moviesSlice.actions;
+export const { addMovie, removeMovie, reset } = moviesSlice.actions;
 
 const store = configureStore({
   reducer: {
