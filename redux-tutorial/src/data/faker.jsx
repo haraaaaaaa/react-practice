@@ -6,13 +6,13 @@ import { faker } from "@faker-js/faker/locale/en";
 export const createRandomMovie = () => {
   return {
     title: `${faker.word.adjective()} ${faker.word.noun()}`,
-    id: faker.number.int({ min: 1, max: 100 }), // ✅ Fix here
+    id: faker.number.int({ min: 1, max: 10000 }), // ✅ Fix here
   };
 };
 
 export const createRandomSong = () => {
   return {
     title: faker.music.songName(),
-    id: faker.number.int({ min: 1, max: 100 }), // ✅ Fix here
+    id: faker.number.int({ min: 1, max: 10000 }), // ✅ Fix here
   };
 };
