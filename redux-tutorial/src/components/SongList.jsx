@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSong, removeSong } from "../store/index.jsx";
+import { addSong, removeSong } from "../store";
 import { createRandomSong } from "../data/faker.jsx";
 
 function SongPlaylist() {

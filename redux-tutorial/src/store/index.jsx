@@ -8,7 +8,7 @@ const songsSlice = createSlice({
       state.push(action.payload);
     },
     removeSong(state, action) {
-      console.log("Removed song");
+      return state.filter((song) => song.id !== action.payload.id);
     },
   },
 });
