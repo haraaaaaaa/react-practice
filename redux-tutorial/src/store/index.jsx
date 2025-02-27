@@ -13,10 +13,12 @@ const songsSlice = createSlice({
   },
 });
 
+export const { addSong, removeSong } = songsSlice.actions;
+
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
   },
 });
 
-console.log(store);
+export { store };
