@@ -1,7 +1,21 @@
-import { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovie, removeMovie } from "../store";
+import { createRandomMovie } from "../data/faker.jsx";
 
 function MoviePlaylist() {
-  const [moviePlaylist, setMoviePlaylist] = useState([]);
+  const dispatch = useDispatch();
+
+  const moviePlaylist = useSelector((state) => {
+    return state.movies;
+  });
+
+  const handleMovieAdd = (movie) => {
+    dispatch(addMovie(movie));
+  };
+  const handleMovieRemove = (movie) => {
+    dispatch(removeMovie(movie));
+  };
 
   const renderedMovies = moviePlaylist.map((movie) => (
     <li key={movie.id} className="flex justify-between items-center bg-gray-100 p-3 rounded-md shadow-md">
